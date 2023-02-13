@@ -59,4 +59,5 @@ after the sendall function as follows:
 Since the data was sent as bytes and encoded with "utf-8" it needs to be decoded and converted from back to a python dictionary.
 
 C. UML sequence diagram
+
 ![img.png](img.png)
