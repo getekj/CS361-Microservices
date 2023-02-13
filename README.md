@@ -42,7 +42,7 @@ will be created. The microservice will send back a message in the format
 { "status" : "Success or Failure" } 
 
 to indicate if the file creation was successful or not. If a "load" request was called then the program will send back 
-the information in the following format 
+the information in the following format as bytes
 
 { "info" : "contents of the specified txt file" }. 
 
@@ -55,3 +55,8 @@ after the sendall function as follows:
     data = data.decode("utf-8") # decode message
     data = json.loads(data) # change from json back into python dictionary
 ```
+
+Since the data was sent as bytes and encoded with "utf-8" it needs to be decoded and converted from back to a python dictionary.
+
+C. UML sequence diagram
+![img.png](img.png)

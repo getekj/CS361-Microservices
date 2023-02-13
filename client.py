@@ -5,11 +5,15 @@ HOST = "127.0.0.1"  # The server's hostname or IP address
 PORT = 54290        # The port used by the server
 
 #first client info tests the save functiona, second tests the load functionality
-client_info = {"action": "save", "path": "path.txt", "info": "You are millionare yay"}
-#client_info = {"action": "load", "path": "financial_info.txt"}
+client_info_save = {"action": "save", "path": "path.txt", "info": "You are millionare yay"}
+client_info_load = {"action": "load", "path": "financial_info.txt"}
 
+option = input("Would you like to save or load a file?\n")
 #converting python dict into json string
-client_info_json = json.dumps(client_info)
+if option == "save":
+    client_info_json = json.dumps(client_info_save)
+elif option == "load":
+    client_info_json = json.dumps(client_info_load)
 
 #creates the socket object
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

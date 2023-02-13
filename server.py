@@ -33,7 +33,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 success_msg = {"status":"Success"}
                 success_msg_json = json.dumps(success_msg)
                 conn.sendall(bytes(success_msg_json,encoding="utf-8"))
-            if data["action"] == "load":
+            elif data["action"] == "load":
                 print("load file")
                 send_back = {}
                 with open(data["path"], 'r') as load_file:
@@ -42,6 +42,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     send_back["info"] = load_file.read()
                 print(send_back)
                 send_back_json = json.dumps(send_back)
-                conn.sendall(bytes(send_back_json,encoding="utf-8"))
+                conn.sendall(bytes(send_back_json, encoding="utf-8"))
+            else:
+                fail_message = {"status": "Failure"}
+                fail_msg_json = json.dumps(fail_message)
+                conn.sendall(bytes(fail_msg_json, encoding="utf-8"))
 
 
